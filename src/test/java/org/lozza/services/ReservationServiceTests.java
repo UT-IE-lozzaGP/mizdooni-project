@@ -1,7 +1,7 @@
 package org.lozza.services;
 
 import org.junit.jupiter.api.*;
-import org.lozza.business.ds.Reservation;
+import org.lozza.business.entry.Reservation;
 import org.lozza.business.services.*;
 import org.lozza.business.services.exceptions.ReservationServiceException;
 import org.lozza.business.services.exceptions.RestaurantServiceException;
@@ -94,7 +94,7 @@ public class ReservationServiceTests extends ReservationService {
 
     @Test
     public void cancelReservation()
-            throws UserServiceException, RestaurantServiceException, TableServiceException, ReservationServiceException {
+            throws UserServiceException, RestaurantServiceException, TableServiceException {
         Reservation reservation = new Reservation(
                 12,
                 UserService.getClientByForce("user2"),
@@ -117,7 +117,7 @@ public class ReservationServiceTests extends ReservationService {
     @Test
     public void addReservationTests()
             throws UserServiceException, RestaurantServiceException, TableServiceException, ReservationServiceException {
-        int reservationNumber1 = ReservationService.reserveTable(
+        ReservationService.reserveTable(
                 UserService.getClientByForce("user2"),
                 TableService.getTableByForce(
                         RestaurantService.getRestaurantByForce("restaurant1"),
@@ -125,7 +125,7 @@ public class ReservationServiceTests extends ReservationService {
                 ),
                 LocalDateTime.of(2024, 4, 5, 10, 0)
         );
-        int reservationNumber2 = ReservationService.reserveTable(
+        ReservationService.reserveTable(
                 UserService.getClientByForce("user2"),
                 TableService.getTableByForce(
                         RestaurantService.getRestaurantByForce("restaurant1"),
@@ -133,7 +133,7 @@ public class ReservationServiceTests extends ReservationService {
                 ),
                 LocalDateTime.of(2024, 4, 5, 20, 0)
         );
-        int reservationNumber3 = ReservationService.reserveTable(
+        ReservationService.reserveTable(
                 UserService.getClientByForce("user2"),
                 TableService.getTableByForce(
                         RestaurantService.getRestaurantByForce("restaurant1"),

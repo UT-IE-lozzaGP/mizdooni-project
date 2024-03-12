@@ -5,7 +5,7 @@ public class ReservationServiceException extends ServiceException{
         InvalidClient("invalid client"),
         InvalidTable("invalid table"),
         TimeSlotAlreadyBooked("Selected time slot is already booked"),
-        InvalidDateTime("Selected datetime is in the past"),
+        InvalidDateTime("Selected datetime is invalid"),
         ReservationNotFound("reservation not found"),
         PassedDateTime("datetime has passed");
 

@@ -1,10 +1,10 @@
 package org.lozza.business.services;
 
-import org.lozza.business.ds.Reservation;
-import org.lozza.business.ds.Restaurant;
-import org.lozza.business.ds.Table;
-import org.lozza.business.ds.collections.ReservationCollection;
-import org.lozza.business.ds.user.Client;
+import org.lozza.business.entry.Reservation;
+import org.lozza.business.entry.Restaurant;
+import org.lozza.business.entry.Table;
+import org.lozza.business.collections.ReservationCollection;
+import org.lozza.business.entry.user.Client;
 import org.lozza.business.services.exceptions.ReservationServiceException;
 
 import java.time.LocalDateTime;
@@ -77,16 +77,15 @@ public class ReservationService {
         reservations.remove(reservation);
     }
 
-    public static List<Reservation> showReservationHistory(Client client) throws ReservationServiceException {
-        checkClientIsValid(client);
-        return reservations.stream()
-                .filter(reservation -> client.equals(reservation.client()))
-                .toList();
-    }
-
     public static List<Reservation> getAllReservationsByRestaurant(Restaurant restaurant) {
         return reservations.stream()
                 .filter(reservation -> restaurant.equals(reservation.table().restaurant()))
+                .toList();
+    }
+
+    public static List<Reservation> getAllReservationsByClient(Client client) {
+        return reservations.stream()
+                .filter(reservation -> reservation.client().equals(client))
                 .toList();
     }
 

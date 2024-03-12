@@ -1,10 +1,10 @@
 package org.lozza.business.services;
 
 
-import org.lozza.business.ds.Restaurant;
-import org.lozza.business.ds.collections.RestaurantCollection;
-import org.lozza.business.ds.user.Manager;
-import org.lozza.business.ds.utils.Address;
+import org.lozza.business.entry.Restaurant;
+import org.lozza.business.collections.RestaurantCollection;
+import org.lozza.business.entry.user.Manager;
+import org.lozza.business.entry.utils.Address;
 import org.lozza.business.services.exceptions.RestaurantServiceException;
 
 import java.time.LocalDate;
@@ -42,23 +42,29 @@ public class RestaurantService {
                 ));
     }
 
-    protected static void checkManagerIsValid(Manager manager) throws RestaurantServiceException {
-        if (manager == null)
-            throw new RestaurantServiceException(RestaurantServiceException.Type.InvalidManager);
+    public static Restaurant getRestaurantById(String id) throws RestaurantServiceException {
+        return restaurants.stream()
+                .filter(restaurant -> restaurant.id().equals(id))
+                .findFirst()
+                .orElseThrow(() ->
+                        new RestaurantServiceException(RestaurantServiceException.Type.RestaurantNotFound));
     }
-    protected static void checkNameIsUnique(String name) throws RestaurantServiceException {
-        if (name == null || restaurants.stream().anyMatch(restaurant -> name.equals(restaurant.name())))
-            throw new RestaurantServiceException(RestaurantServiceException.Type.NameNotNew);
+    public static List<Restaurant> searchRestaurantByManager(Manager manager) {
+        return restaurants.stream()
+                .filter(restaurant -> manager.equals(restaurant.manager()))
+                .toList();
     }
 
-    protected static void checkTimeIsValid(LocalTime time) throws RestaurantServiceException {
-        if (time == null || time.getMinute() != 0)
-            throw new RestaurantServiceException(RestaurantServiceException.Type.InvalidTime);
+    public static List<Restaurant> searchRestaurantByName(String name) {
+        return restaurants.stream()
+                .filter(restaurant -> name.equals(restaurant.name()))
+                .toList();
     }
 
-    protected static void checkAddressIsValid(Address address) throws RestaurantServiceException {
-        if (address == null || address.country() == null || address.city() == null || address.street() == null)
-            throw new RestaurantServiceException(RestaurantServiceException.Type.InvalidAddress);
+    public static List<Restaurant> searchRestaurantByType(String type) {
+        return restaurants.stream()
+                .filter(restaurant -> type.equals(restaurant.type()))
+                .toList();
     }
 
     public static Optional<Restaurant> getRestaurant(String name) {
@@ -87,19 +93,35 @@ public class RestaurantService {
         }
         return dateTimes;
     }
+
+    public static List<Restaurant> getAllRestaurants() {
+        return restaurants;
+    }
+
+    protected static void checkManagerIsValid(Manager manager) throws RestaurantServiceException {
+        if (manager == null)
+            throw new RestaurantServiceException(RestaurantServiceException.Type.InvalidManager);
+    }
+    protected static void checkNameIsUnique(String name) throws RestaurantServiceException {
+        if (name == null || name.isEmpty()
+                || restaurants.stream().anyMatch(restaurant -> name.equals(restaurant.name())))
+            throw new RestaurantServiceException(RestaurantServiceException.Type.NameNotNew);
+    }
+
+    protected static void checkTimeIsValid(LocalTime time) throws RestaurantServiceException {
+        if (time == null || time.getMinute() != 0)
+            throw new RestaurantServiceException(RestaurantServiceException.Type.InvalidTime);
+    }
+
+    protected static void checkAddressIsValid(Address address) throws RestaurantServiceException {
+        if (address == null
+                || address.country() == null || address.country().isEmpty()
+                || address.city() == null || address.city().isEmpty()
+                || address.street() == null || address.street().isEmpty())
+            throw new RestaurantServiceException(RestaurantServiceException.Type.InvalidAddress);
+    }
+
     public static void reset() {
         restaurants.clear();
-    }
-
-    public static List<Restaurant> searchRestaurantByName(String name) {
-        return restaurants.stream()
-                .filter(restaurant -> name.equals(restaurant.name()))
-                .toList();
-    }
-
-    public static List<Restaurant> searchRestaurantByType(String type) {
-        return restaurants.stream()
-                .filter(restaurant -> type.equals(restaurant.type()))
-                .toList();
     }
 }

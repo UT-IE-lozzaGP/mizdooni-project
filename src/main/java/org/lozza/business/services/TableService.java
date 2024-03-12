@@ -1,9 +1,9 @@
 package org.lozza.business.services;
 
-import org.lozza.business.ds.Restaurant;
-import org.lozza.business.ds.Table;
-import org.lozza.business.ds.collections.TableCollection;
-import org.lozza.business.ds.user.Manager;
+import org.lozza.business.entry.Restaurant;
+import org.lozza.business.entry.Table;
+import org.lozza.business.collections.TableCollection;
+import org.lozza.business.entry.user.Manager;
 import org.lozza.business.services.exceptions.TableServiceException;
 
 import java.util.List;
@@ -30,6 +30,22 @@ public class TableService {
         ));
     }
 
+    public static Optional<Table> getTable(Restaurant restaurant, int tableNumber) {
+        return tables.stream()
+                .filter(table -> restaurant.equals(table.restaurant()) && tableNumber == table.tableNumber())
+                .findFirst();
+    }
+    public static Table getTableByForce(Restaurant restaurant, int tableNumber) throws TableServiceException {
+        return getTable(restaurant, tableNumber)
+                .orElseThrow(() -> new TableServiceException(TableServiceException.Type.TableNotFound));
+    }
+
+    public static List<Table> getAllTablesByRestaurant(Restaurant restaurant) {
+        return tables.stream()
+                .filter(table -> restaurant.equals(table.restaurant()))
+                .toList();
+    }
+
     protected static void checkManagerIsValid(Manager manager) throws TableServiceException {
         if (manager == null)
             throw new TableServiceException(TableServiceException.Type.InvalidManager);
@@ -44,26 +60,12 @@ public class TableService {
                         .anyMatch(table -> restaurant.equals(table.restaurant()) && tableNumber == table.tableNumber()))
             throw new TableServiceException(TableServiceException.Type.TableNumberNotNew);
     }
-    public static Optional<Table> getTable(Restaurant restaurant, int tableNumber) {
-        return tables.stream()
-                .filter(table -> restaurant.equals(table.restaurant()) && tableNumber == table.tableNumber())
-                .findFirst();
-    }
-    public static Table getTableByForce(Restaurant restaurant, int tableNumber) throws TableServiceException {
-        return getTable(restaurant, tableNumber)
-                .orElseThrow(() -> new TableServiceException(TableServiceException.Type.TableNotFound));
-    }
 
     protected static void checkSeatsNumberIsValid(Integer seatsNumber) throws TableServiceException {
         if (seatsNumber == null || seatsNumber <= 0)
             throw new TableServiceException(TableServiceException.Type.InvalidSeatsNumber);
     }
 
-    public static List<Table> getAllTablesByRestaurant(Restaurant restaurant) {
-        return tables.stream()
-                .filter(table -> restaurant.equals(table.restaurant()))
-                .toList();
-    }
     public static void reset() {
         tables.clear();
     }

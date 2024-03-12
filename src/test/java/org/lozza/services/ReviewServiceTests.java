@@ -78,7 +78,7 @@ public class ReviewServiceTests extends ReviewService {
     @Test
     public void addReviewTests() {
         Assertions.assertDoesNotThrow(() ->
-                ReviewService.addReview(
+                ReviewService.addOrUpdateReview(
                         UserService.getClientByForce("client1"),
                         RestaurantService.getRestaurantByForce("restaurant1"),
                         4.5F,

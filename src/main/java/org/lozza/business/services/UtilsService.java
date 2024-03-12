@@ -1,6 +1,6 @@
 package org.lozza.business.services;
 
-import org.lozza.business.ds.utils.Address;
+import org.lozza.business.entry.utils.Address;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class UtilsService {
     private static final DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm");
-    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
     public static Address getAddress(String country, String city, String street) {
         return new Address(country, city, street);

@@ -4,7 +4,6 @@ public class RestaurantServiceException extends ServiceException {
     public enum Type implements ServiceException.Type {
         InvalidTime("time is invalid"),
         InvalidManager("invalid manager"),
-        InvalidName("name is invalid"),
         InvalidAddress("address is invalid"),
         NameNotNew("name was used before"),
         RestaurantNotFound("restaurant not found");

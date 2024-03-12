@@ -1,7 +1,7 @@
 package org.lozza.services;
 
 import org.junit.jupiter.api.*;
-import org.lozza.business.ds.utils.Address;
+import org.lozza.business.entry.utils.Address;
 import org.lozza.business.services.RestaurantService;
 import org.lozza.business.services.UserService;
 import org.lozza.business.services.UtilsService;

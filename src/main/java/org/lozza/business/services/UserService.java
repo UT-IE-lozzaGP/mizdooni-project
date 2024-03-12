@@ -1,10 +1,10 @@
 package org.lozza.business.services;
 
-import org.lozza.business.ds.collections.UserCollection;
-import org.lozza.business.ds.user.Client;
-import org.lozza.business.ds.user.Manager;
-import org.lozza.business.ds.user.User;
-import org.lozza.business.ds.utils.Address;
+import org.lozza.business.collections.UserCollection;
+import org.lozza.business.entry.user.Client;
+import org.lozza.business.entry.user.Manager;
+import org.lozza.business.entry.user.User;
+import org.lozza.business.entry.utils.Address;
 import org.lozza.business.services.exceptions.UserServiceException;
 
 import java.util.Optional;
@@ -36,6 +36,12 @@ public class UserService {
         });
     }
 
+    public static User loginAndGetUser(String username, String password) throws UserServiceException {
+        User user = getUserByForce(username);
+        if (!password.equals(user.password()))
+            throw new UserServiceException(UserServiceException.Type.WrongPassword);
+        return user;
+    }
     protected static void checkRoleIsValid(String role) throws UserServiceException {
         if (role == null || (!role.equals("client") && !role.equals("manager")))
             throw new UserServiceException(UserServiceException.Type.InvalidRole);
@@ -55,7 +61,7 @@ public class UserService {
 
     protected static void checkUsernameIsValid(String username) throws UserServiceException {
         try {
-            if (username == null) throw new Exception();
+            if (username == null || username.isEmpty()) throw new Exception();
             final Matcher matcher = usernamePattern.matcher(username);
             if (!matcher.matches())
                 throw new Exception();
@@ -66,7 +72,7 @@ public class UserService {
 
     protected static void checkEmailIsValid(String email) throws UserServiceException {
         try {
-            if (email == null) throw new Exception();
+            if (email == null || email.isEmpty()) throw new Exception();
             final Matcher matcher = emailPattern.matcher(email);
             if (!matcher.matches())
                 throw new Exception();
@@ -105,25 +111,10 @@ public class UserService {
                 .orElseThrow(() -> new UserServiceException(UserServiceException.Type.UserNotFound));
     }
     protected static void checkAddressIsValid(Address address) throws UserServiceException {
-        if (address == null || address.country() == null || address.city() == null)
+        if (address == null
+                || address.country() == null || address.country().isEmpty()
+                || address.city() == null || address.city().isEmpty())
             throw new UserServiceException(UserServiceException.Type.InvalidAddress);
-    }
-
-    protected static void checkUserExists(String username) throws UserServiceException {
-        if (username == null)
-            throw new UserServiceException(UserServiceException.Type.InvalidUsername);
-        getUser(username).orElseThrow(
-                () -> new UserServiceException(UserServiceException.Type.UserNotFound)
-        );
-    }
-
-    protected static void checkDoesHaveManagerRole(String username) throws UserServiceException {
-        if (username == null)
-            throw new UserServiceException(UserServiceException.Type.InvalidUsername);
-        final User user = getUser(username)
-                .orElseThrow(
-                        () -> new UserServiceException(UserServiceException.Type.UserNotFound));
-        if (!user.getClass().equals(Manager.class)) throw new UserServiceException(UserServiceException.Type.NotManager);
     }
 
     public static void reset() {

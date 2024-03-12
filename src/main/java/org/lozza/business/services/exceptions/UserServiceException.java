@@ -10,7 +10,7 @@ public class UserServiceException extends ServiceException {
         InvalidUsername("username is invalid"),
         UsernameNotNew("username has been used before"),
         UserNotFound("user not found"),
-        NotManager("user is not a manager");
+        WrongPassword("entered password is wrong");
 
         private final String message;
 
