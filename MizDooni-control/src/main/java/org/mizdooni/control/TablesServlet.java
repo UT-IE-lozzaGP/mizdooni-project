@@ -44,6 +44,8 @@ public class TablesServlet extends HttpServlet {
                     Integer.parseInt(tableNumber),
                     Integer.parseInt(seatsNumber)
             );
+
+            response.sendRedirect(request.getContextPath() + "/success");
         } catch (Exception e) {
             logger.error(e.getMessage());
             response.sendRedirect(request.getContextPath() + "/error" +
