@@ -8,23 +8,24 @@ import org.mizdooni.business.datatype.Username;
 import org.mizdooni.business.datatype.Address;
 
 @Getter
-@Builder
 @EqualsAndHashCode
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-public abstract class User {
+abstract class User {
     @NonNull
-    @Builder.Default
-    private ID id = new ID();
-    @NonNull
+    private ID id;
+    @NonNull @Setter
     private Username username;
-    @NonNull
+    @NonNull @Setter
     private Password password;
-    @NonNull
+    @NonNull @Setter
     private Email email;
-    @NonNull
+    @NonNull @Setter
     private Address address;
 
     protected User(@NonNull Username username, @NonNull Password password, @NonNull Email email, @NonNull Address address) {
-        this(new ID(), username, password, email, address);
+        this.id = new ID();
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.address = address;
     }
 }
