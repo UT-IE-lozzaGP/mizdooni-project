@@ -1,10 +1,10 @@
 package org.mizdooni.business.datatype.id.user;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Value;
 import org.mizdooni.business.datatype.id.UserID;
 
 @EqualsAndHashCode(callSuper = true)
-@Data
+@Value
 public class ManagerID extends UserID {
 }

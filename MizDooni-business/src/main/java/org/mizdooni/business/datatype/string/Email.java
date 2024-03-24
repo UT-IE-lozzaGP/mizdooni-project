@@ -2,8 +2,7 @@ package org.mizdooni.business.datatype.string;
 
 import lombok.*;
 
-@Data
+@Value
 public class Email {
-    @NonNull
-    private final String value;
+    @NonNull String value;
 }

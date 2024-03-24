@@ -1,9 +1,9 @@
 package org.mizdooni.business.datatype.id;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Value;
 
 @EqualsAndHashCode(callSuper = true)
-@Data
+@Value
 public class TableID extends ID {
 }

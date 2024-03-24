@@ -5,13 +5,11 @@ import lombok.*;
 import org.mizdooni.business.datatype.string.Message;
 import org.mizdooni.business.exception.Exception;
 
-@Data
+@Value
 public class ServiceInterval {
-    @NonNull
-    private final Integer startHour;
+    @NonNull Integer startHour;
 
-    @NonNull
-    private final Integer endHour;
+    @NonNull Integer endHour;
 
     public ServiceInterval(@NonNull Integer startHour, @NonNull Integer endHour) {
         verifyInterval(startHour, endHour);

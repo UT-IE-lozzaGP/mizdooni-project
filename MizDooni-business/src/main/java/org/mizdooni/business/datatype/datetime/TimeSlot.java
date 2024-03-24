@@ -5,10 +5,9 @@ import lombok.*;
 import org.mizdooni.business.datatype.string.Message;
 import org.mizdooni.business.exception.Exception;
 
-@Data
+@Value
 public class TimeSlot {
-    @NonNull
-    private final Integer startHour;
+    @NonNull Integer startHour;
 
     public TimeSlot(@NonNull Integer startHour) {
         verifySlot(startHour);

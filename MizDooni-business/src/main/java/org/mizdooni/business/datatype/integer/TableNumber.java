@@ -2,8 +2,7 @@ package org.mizdooni.business.datatype.integer;
 
 import lombok.*;
 
-@Data
+@Value
 public class TableNumber {
-    @NonNull
-    private final Integer value;
+    @NonNull Integer value;
 }
