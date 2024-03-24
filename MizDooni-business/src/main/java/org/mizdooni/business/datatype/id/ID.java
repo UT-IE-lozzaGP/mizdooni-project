@@ -1,15 +1,11 @@
 package org.mizdooni.business.datatype.id;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NonNull;
+import lombok.experimental.SuperBuilder;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-@EqualsAndHashCode
-@Getter
-@Builder
+@SuperBuilder
 abstract class ID {
     @NonNull
     private final String value;

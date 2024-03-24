@@ -7,14 +7,14 @@ import org.mizdooni.business.datatype.Address;
 import org.mizdooni.business.datatype.string.Email;
 import org.mizdooni.business.datatype.string.Password;
 import org.mizdooni.business.datatype.string.Username;
-import org.mizdooni.business.datatype.id.ManagerID;
+import org.mizdooni.business.datatype.id.user.ManagerID;
 
 @Getter
-@Builder
 public class Manager extends User {
     @NonNull
-    @Builder.Default
     private final ManagerID id = new ManagerID();
+
+    @Builder
     public Manager(@NonNull Username username, @NonNull Password password, @NonNull Email email, @NonNull Address address) {
         super(username, password, email, address);
     }

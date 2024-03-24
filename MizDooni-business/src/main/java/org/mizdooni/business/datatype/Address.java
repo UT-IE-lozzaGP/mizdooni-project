@@ -2,10 +2,9 @@ package org.mizdooni.business.datatype;
 
 import lombok.*;
 
-@EqualsAndHashCode
-@Getter
-@AllArgsConstructor
 @Builder
+@AllArgsConstructor
+@Data
 public class Address {
     @NonNull
     private final String country;

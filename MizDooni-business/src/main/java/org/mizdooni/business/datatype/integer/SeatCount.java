@@ -2,11 +2,8 @@ package org.mizdooni.business.datatype.integer;
 
 import lombok.*;
 
-@EqualsAndHashCode
-@Getter
-@AllArgsConstructor
-@Builder
+@Data
 public class SeatCount {
     @NonNull
-    private Integer value;
+    private final Integer value;
 }

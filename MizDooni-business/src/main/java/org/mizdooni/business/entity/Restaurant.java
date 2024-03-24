@@ -6,17 +6,15 @@ import lombok.NonNull;
 import lombok.Setter;
 import org.mizdooni.business.datatype.*;
 import org.mizdooni.business.datatype.datetime.ServiceInterval;
-import org.mizdooni.business.datatype.id.ManagerID;
+import org.mizdooni.business.datatype.id.user.ManagerID;
 import org.mizdooni.business.datatype.id.RestaurantID;
 import org.mizdooni.business.datatype.string.Description;
 import org.mizdooni.business.datatype.string.FoodCategory;
 import org.mizdooni.business.datatype.string.Name;
 
-@Builder
 @Getter
 public class Restaurant {
     @NonNull
-    @Builder.Default
     private final RestaurantID id = new RestaurantID();
 
     @NonNull @Setter
@@ -37,6 +35,7 @@ public class Restaurant {
     @NonNull @Setter
     private Address address;
 
+    @Builder
     public Restaurant(@NonNull Name name,
                       @NonNull ManagerID managerID,
                       @NonNull FoodCategory foodCategory,

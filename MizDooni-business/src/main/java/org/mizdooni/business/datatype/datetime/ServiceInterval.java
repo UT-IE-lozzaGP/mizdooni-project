@@ -5,9 +5,7 @@ import lombok.*;
 import org.mizdooni.business.datatype.string.Message;
 import org.mizdooni.business.exception.Exception;
 
-@EqualsAndHashCode
-@Getter
-@Builder
+@Data
 public class ServiceInterval {
     @NonNull
     private final Integer startHour;

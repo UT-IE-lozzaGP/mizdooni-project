@@ -1,6 +1,7 @@
 package org.mizdooni.business.entity.user;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.mizdooni.business.datatype.*;
 import org.mizdooni.business.datatype.id.UserID;
 import org.mizdooni.business.datatype.string.Email;
@@ -8,10 +9,9 @@ import org.mizdooni.business.datatype.string.Password;
 import org.mizdooni.business.datatype.string.Username;
 
 @Getter
-@Builder
+@SuperBuilder
 abstract class User {
     @NonNull
-    @Builder.Default
     private final UserID id = new UserID();
 
     @NonNull @Setter

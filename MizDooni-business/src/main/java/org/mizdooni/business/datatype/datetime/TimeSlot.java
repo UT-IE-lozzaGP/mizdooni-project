@@ -1,16 +1,11 @@
 package org.mizdooni.business.datatype.datetime;
 
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 import org.mizdooni.business.datatype.string.Message;
 import org.mizdooni.business.exception.Exception;
 
-@EqualsAndHashCode
-@Getter
-@Builder
+@Data
 public class TimeSlot {
     @NonNull
     private final Integer startHour;

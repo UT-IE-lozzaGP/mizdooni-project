@@ -2,11 +2,8 @@ package org.mizdooni.business.datatype.string;
 
 import lombok.*;
 
-@EqualsAndHashCode
-@Getter
-@AllArgsConstructor
-@Builder
+@Data
 public class Password {
     @NonNull
-    private String value;
+    private final String value;
 }
