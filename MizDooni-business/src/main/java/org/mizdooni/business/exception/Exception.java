@@ -1,7 +1,7 @@
 package org.mizdooni.business.exception;
 
 import lombok.*;
-import org.mizdooni.business.datatype.Message;
+import org.mizdooni.business.datatype.string.Message;
 
 import java.util.ArrayList;
 import java.util.List;

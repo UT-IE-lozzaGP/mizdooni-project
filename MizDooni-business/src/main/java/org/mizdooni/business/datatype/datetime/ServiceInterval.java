@@ -2,7 +2,7 @@ package org.mizdooni.business.datatype.datetime;
 
 
 import lombok.*;
-import org.mizdooni.business.datatype.Message;
+import org.mizdooni.business.datatype.string.Message;
 import org.mizdooni.business.exception.Exception;
 
 @EqualsAndHashCode

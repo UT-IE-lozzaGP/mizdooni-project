@@ -3,6 +3,9 @@ package org.mizdooni.business.entity.user;
 import lombok.*;
 import org.mizdooni.business.datatype.*;
 import org.mizdooni.business.datatype.id.UserID;
+import org.mizdooni.business.datatype.string.Email;
+import org.mizdooni.business.datatype.string.Password;
+import org.mizdooni.business.datatype.string.Username;
 
 @Getter
 @Builder

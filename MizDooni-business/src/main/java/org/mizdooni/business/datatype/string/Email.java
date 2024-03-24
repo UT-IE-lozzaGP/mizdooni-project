@@ -1,4 +1,4 @@
-package org.mizdooni.business.datatype;
+package org.mizdooni.business.datatype.string;
 
 import lombok.*;
 

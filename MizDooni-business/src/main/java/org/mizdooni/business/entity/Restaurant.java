@@ -8,6 +8,9 @@ import org.mizdooni.business.datatype.*;
 import org.mizdooni.business.datatype.datetime.ServiceInterval;
 import org.mizdooni.business.datatype.id.ManagerID;
 import org.mizdooni.business.datatype.id.RestaurantID;
+import org.mizdooni.business.datatype.string.Description;
+import org.mizdooni.business.datatype.string.FoodCategory;
+import org.mizdooni.business.datatype.string.Name;
 
 @Builder
 @Getter

@@ -1,4 +1,4 @@
-package org.mizdooni.business.datatype;
+package org.mizdooni.business.datatype.string;
 
 import lombok.*;
 
@@ -6,7 +6,7 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 @Builder
-public class Password {
+public class Message {
     @NonNull
     private String value;
 }
