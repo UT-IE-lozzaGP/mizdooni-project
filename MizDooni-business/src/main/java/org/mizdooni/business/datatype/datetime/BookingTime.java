@@ -6,6 +6,8 @@ import lombok.Value;
 
 import java.time.LocalTime;
 
+import static org.mizdooni.business.datatype.datetime.DateTimeUtils.isMinutesZero;
+
 @Value
 public class BookingTime {
     @NonNull LocalTime startTime;
@@ -16,11 +18,7 @@ public class BookingTime {
     }
 
     private static void verify(@NonNull LocalTime startTime) {
-        if (!isSlotValid(startTime))
+        if (!isMinutesZero(startTime))
             throw new RuntimeException("time slot is not valid");
-    }
-
-    private static boolean isSlotValid(@NonNull LocalTime startTime) {
-        return startTime.getMinute() == 0;
     }
 }

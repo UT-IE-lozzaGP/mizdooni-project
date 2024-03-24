@@ -6,6 +6,8 @@ import lombok.Value;
 
 import java.time.LocalTime;
 
+import static org.mizdooni.business.datatype.datetime.DateTimeUtils.isMinutesZero;
+
 @Value
 public class ServiceInterval {
     @NonNull LocalTime openingTime;
@@ -25,6 +27,8 @@ public class ServiceInterval {
     }
 
     private static boolean isIntervalValid(@NonNull LocalTime openingTime, @NonNull LocalTime closingTime) {
-        return openingTime.getMinute() == 0 && closingTime.getMinute() == 0 && openingTime.isBefore(closingTime);
+        return isMinutesZero(openingTime)
+                && isMinutesZero(closingTime)
+                && openingTime.isBefore(closingTime);
     }
 }
