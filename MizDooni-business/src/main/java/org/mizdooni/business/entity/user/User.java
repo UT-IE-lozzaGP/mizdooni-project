@@ -4,7 +4,6 @@ import lombok.*;
 import org.mizdooni.business.datatype.*;
 
 @Getter
-@EqualsAndHashCode
 @Builder
 abstract class User {
     @NonNull
