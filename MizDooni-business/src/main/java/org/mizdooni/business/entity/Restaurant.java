@@ -4,35 +4,36 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import org.mizdooni.business.datatype.*;
+import org.mizdooni.business.datatype.Address;
 import org.mizdooni.business.datatype.datetime.ServiceInterval;
-import org.mizdooni.business.datatype.id.user.ManagerID;
 import org.mizdooni.business.datatype.id.RestaurantID;
+import org.mizdooni.business.datatype.id.user.ManagerID;
 import org.mizdooni.business.datatype.string.Description;
 import org.mizdooni.business.datatype.string.FoodCategory;
 import org.mizdooni.business.datatype.string.Name;
 
 @Getter
+@Setter
 public class Restaurant {
     @NonNull
     private final RestaurantID id = new RestaurantID();
 
-    @NonNull @Setter
+    @NonNull
     private Name name;
 
-    @NonNull @Setter
+    @NonNull
     private ManagerID managerID;
 
-    @NonNull @Setter
+    @NonNull
     private FoodCategory foodCategory;
 
-    @NonNull @Setter
+    @NonNull
     private Description description;
 
-    @NonNull @Setter
+    @NonNull
     private ServiceInterval serviceInterval;
 
-    @NonNull @Setter
+    @NonNull
     private Address address;
 
     @Builder

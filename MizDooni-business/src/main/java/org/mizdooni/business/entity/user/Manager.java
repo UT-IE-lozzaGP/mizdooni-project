@@ -4,10 +4,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import org.mizdooni.business.datatype.Address;
+import org.mizdooni.business.datatype.id.user.ManagerID;
 import org.mizdooni.business.datatype.string.Email;
 import org.mizdooni.business.datatype.string.Password;
 import org.mizdooni.business.datatype.string.Username;
-import org.mizdooni.business.datatype.id.user.ManagerID;
 
 @Getter
 public class Manager extends User {

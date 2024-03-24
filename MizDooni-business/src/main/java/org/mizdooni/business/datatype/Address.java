@@ -16,7 +16,4 @@ public class Address {
     @Builder.Default
     private final String street = "";
 
-    public Address(@NonNull String country, @NonNull String city) {
-        this(country, city, "");
-    }
 }
