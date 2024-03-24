@@ -6,7 +6,7 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 @Builder
-public class SeatsCount {
+public class SeatCount {
     @NonNull
     private Integer value;
 }

@@ -6,7 +6,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import org.mizdooni.business.datatype.id.RestaurantID;
 import org.mizdooni.business.datatype.id.TableID;
-import org.mizdooni.business.datatype.integer.SeatsCount;
+import org.mizdooni.business.datatype.integer.SeatCount;
 import org.mizdooni.business.datatype.integer.TableNumber;
 
 @Builder
@@ -23,13 +23,13 @@ public class Table {
     private TableNumber tableNumber;
 
     @NonNull @Setter
-    private SeatsCount seatsCount;
+    private SeatCount seatCount;
 
     public Table(@NonNull RestaurantID restaurantID,
                  @NonNull TableNumber tableNumber,
-                 @NonNull SeatsCount seatsCount) {
+                 @NonNull SeatCount seatCount) {
         this.restaurantID = restaurantID;
         this.tableNumber = tableNumber;
-        this.seatsCount = seatsCount;
+        this.seatCount = seatCount;
     }
 }
