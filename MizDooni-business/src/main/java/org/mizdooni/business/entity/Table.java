@@ -6,6 +6,8 @@ import lombok.NonNull;
 import lombok.Setter;
 import org.mizdooni.business.datatype.id.RestaurantID;
 import org.mizdooni.business.datatype.id.TableID;
+import org.mizdooni.business.datatype.integer.SeatsCount;
+import org.mizdooni.business.datatype.integer.TableNumber;
 
 @Builder
 @Getter
