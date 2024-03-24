@@ -11,13 +11,13 @@ public class ServiceInterval {
     @NonNull Integer endHour;
 
     public ServiceInterval(@NonNull Integer startHour, @NonNull Integer endHour) {
-        verifyInterval(startHour, endHour);
+        verify(startHour, endHour);
 
         this.startHour = startHour;
         this.endHour = endHour;
     }
 
-    private static void verifyInterval(@NonNull Integer startHour, @NonNull Integer endHour) {
+    private static void verify(@NonNull Integer startHour, @NonNull Integer endHour) {
         if (!isIntervalValid(startHour, endHour)) {
             throw new RuntimeException("service interval is not valid");
         }

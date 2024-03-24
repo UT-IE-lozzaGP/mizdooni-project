@@ -9,12 +9,12 @@ public class TimeSlot {
     @NonNull Integer startHour;
 
     public TimeSlot(@NonNull Integer startHour) {
-        verifySlot(startHour);
+        verify(startHour);
 
         this.startHour = startHour;
     }
 
-    private static void verifySlot(@NonNull Integer startHour) {
+    private static void verify(@NonNull Integer startHour) {
         if (!isSlotValid(startHour)) {
             throw new RuntimeException("time slot is not valid");
         }
