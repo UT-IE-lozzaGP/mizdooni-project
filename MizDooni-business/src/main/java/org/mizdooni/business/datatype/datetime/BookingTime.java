@@ -16,9 +16,8 @@ public class BookingTime {
     }
 
     private static void verify(@NonNull LocalTime startTime) {
-        if (!isSlotValid(startTime)) {
+        if (!isSlotValid(startTime))
             throw new RuntimeException("time slot is not valid");
-        }
     }
 
     private static boolean isSlotValid(@NonNull LocalTime startTime) {

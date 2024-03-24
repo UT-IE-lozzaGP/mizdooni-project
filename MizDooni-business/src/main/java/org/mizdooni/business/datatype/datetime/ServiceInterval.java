@@ -20,9 +20,8 @@ public class ServiceInterval {
     }
 
     private static void verify(@NonNull LocalTime openingTime, @NonNull LocalTime closingTime) {
-        if (!isIntervalValid(openingTime, closingTime)) {
+        if (!isIntervalValid(openingTime, closingTime))
             throw new RuntimeException("service interval is not valid");
-        }
     }
 
     private static boolean isIntervalValid(@NonNull LocalTime openingTime, @NonNull LocalTime closingTime) {
