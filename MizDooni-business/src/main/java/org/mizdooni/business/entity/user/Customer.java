@@ -8,9 +8,9 @@ import org.mizdooni.business.datatype.Password;
 import org.mizdooni.business.datatype.Username;
 
 @EqualsAndHashCode(callSuper = true)
-public class Client extends User {
+public class Customer extends User {
 
-    public Client(@NonNull Username username, @NonNull Password password, @NonNull Email email, @NonNull Address address) {
+    public Customer(@NonNull Username username, @NonNull Password password, @NonNull Email email, @NonNull Address address) {
         super(username, password, email, address);
     }
 }
