@@ -3,7 +3,6 @@ package org.mizdooni.business.entity;
 import lombok.*;
 import org.mizdooni.business.datatype.*;
 import org.mizdooni.business.datatype.datetime.ServiceInterval;
-import org.mizdooni.business.entity.user.Manager;
 
 @Builder
 @Getter
@@ -17,7 +16,7 @@ public class Restaurant {
     private Name name;
 
     @NonNull @Setter
-    private Manager manager;
+    private ID managerID;
 
     @NonNull @Setter
     private FoodCategory foodCategory;
@@ -32,13 +31,13 @@ public class Restaurant {
     private Address address;
 
     public Restaurant(@NonNull Name name,
-                      @NonNull Manager manager,
+                      @NonNull ID managerID,
                       @NonNull FoodCategory foodCategory,
                       @NonNull Description description,
                       @NonNull ServiceInterval serviceInterval,
                       @NonNull Address address) {
         this.name = name;
-        this.manager = manager;
+        this.managerID = managerID;
         this.foodCategory = foodCategory;
         this.description = description;
         this.serviceInterval = serviceInterval;
