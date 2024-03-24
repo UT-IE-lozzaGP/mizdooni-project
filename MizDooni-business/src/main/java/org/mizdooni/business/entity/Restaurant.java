@@ -6,7 +6,6 @@ import org.mizdooni.business.datatype.datetime.ServiceInterval;
 
 @Builder
 @Getter
-@EqualsAndHashCode
 public class Restaurant {
     @NonNull
     @Builder.Default
