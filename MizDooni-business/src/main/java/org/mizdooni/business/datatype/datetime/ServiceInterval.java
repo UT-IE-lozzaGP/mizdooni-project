@@ -1,9 +1,8 @@
 package org.mizdooni.business.datatype.datetime;
 
 
-import lombok.*;
-import org.mizdooni.business.datatype.string.Message;
-import org.mizdooni.business.exception.Exception;
+import lombok.NonNull;
+import lombok.Value;
 
 @Value
 public class ServiceInterval {
@@ -18,17 +17,15 @@ public class ServiceInterval {
         this.endHour = endHour;
     }
 
-    public static boolean isIntervalValid(@NonNull Integer startHour, @NonNull Integer endHour) {
+    private static void verifyInterval(@NonNull Integer startHour, @NonNull Integer endHour) {
+        if (!isIntervalValid(startHour, endHour)) {
+            throw new RuntimeException("service interval is not valid");
+        }
+    }
+
+    private static boolean isIntervalValid(@NonNull Integer startHour, @NonNull Integer endHour) {
         return 0 <= startHour && startHour < 24
                 && 0 < endHour && endHour <= 24
                 && startHour <= endHour;
-    }
-
-    private static void verifyInterval(@NonNull Integer startHour, @NonNull Integer endHour) {
-        if (!isIntervalValid(startHour, endHour)) {
-            Exception exception = new Exception();
-            exception.addMessage(new Message("service interval is not valid"));
-            throw exception;
-        }
     }
 }

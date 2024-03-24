@@ -1,9 +1,8 @@
 package org.mizdooni.business.datatype.datetime;
 
 
-import lombok.*;
-import org.mizdooni.business.datatype.string.Message;
-import org.mizdooni.business.exception.Exception;
+import lombok.NonNull;
+import lombok.Value;
 
 @Value
 public class TimeSlot {
@@ -15,15 +14,13 @@ public class TimeSlot {
         this.startHour = startHour;
     }
 
-    public static boolean isSlotValid(@NonNull Integer startHour) {
-        return 0 <= startHour && startHour < 24;
-    }
-
     private static void verifySlot(@NonNull Integer startHour) {
         if (!isSlotValid(startHour)) {
-            Exception exception = new Exception();
-            exception.addMessage(new Message("time slot is not valid"));
-            throw exception;
+            throw new RuntimeException("time slot is not valid");
         }
+    }
+
+    private static boolean isSlotValid(@NonNull Integer startHour) {
+        return 0 <= startHour && startHour < 24;
     }
 }
