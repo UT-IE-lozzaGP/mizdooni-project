@@ -1,21 +1,26 @@
 package org.mizdooni.business.entity;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 import org.mizdooni.business.datatype.*;
 import org.mizdooni.business.datatype.datetime.ServiceInterval;
+import org.mizdooni.business.datatype.id.ManagerID;
+import org.mizdooni.business.datatype.id.RestaurantID;
 
 @Builder
 @Getter
 public class Restaurant {
     @NonNull
     @Builder.Default
-    private final ID id = new ID();
+    private final RestaurantID id = new RestaurantID();
 
     @NonNull @Setter
     private Name name;
 
     @NonNull @Setter
-    private ID managerID;
+    private ManagerID managerID;
 
     @NonNull @Setter
     private FoodCategory foodCategory;
@@ -30,7 +35,7 @@ public class Restaurant {
     private Address address;
 
     public Restaurant(@NonNull Name name,
-                      @NonNull ID managerID,
+                      @NonNull ManagerID managerID,
                       @NonNull FoodCategory foodCategory,
                       @NonNull Description description,
                       @NonNull ServiceInterval serviceInterval,

@@ -1,4 +1,4 @@
-package org.mizdooni.business.datatype;
+package org.mizdooni.business.datatype.id;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @EqualsAndHashCode
 @Getter
 @Builder
-public class ID {
+abstract class ID {
     @NonNull
     private final String value;
 

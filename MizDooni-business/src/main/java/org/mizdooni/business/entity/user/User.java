@@ -2,13 +2,14 @@ package org.mizdooni.business.entity.user;
 
 import lombok.*;
 import org.mizdooni.business.datatype.*;
+import org.mizdooni.business.datatype.id.UserID;
 
 @Getter
 @Builder
 abstract class User {
     @NonNull
     @Builder.Default
-    private final ID id = new ID();
+    private final UserID id = new UserID();
 
     @NonNull @Setter
     private Username username;

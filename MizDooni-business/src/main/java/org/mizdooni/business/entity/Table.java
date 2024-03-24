@@ -4,29 +4,30 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import org.mizdooni.business.datatype.ID;
+import org.mizdooni.business.datatype.id.RestaurantID;
+import org.mizdooni.business.datatype.id.TableID;
 
 @Builder
 @Getter
 public class Table {
     @NonNull
     @Builder.Default
-    private final ID id = new ID();
+    private final TableID id = new TableID();
 
     @NonNull
-    private final ID restaurantID;
+    private final RestaurantID restaurantID;
 
     @NonNull @Setter
-    private Integer tableNumber;
+    private TableNumber tableNumber;
 
     @NonNull @Setter
-    private Integer seatsNumber;
+    private SeatsCount seatsCount;
 
-    public Table(@NonNull ID restaurantID,
-                 @NonNull Integer tableNumber,
-                 @NonNull Integer seatsNumber) {
+    public Table(@NonNull RestaurantID restaurantID,
+                 @NonNull TableNumber tableNumber,
+                 @NonNull SeatsCount seatsCount) {
         this.restaurantID = restaurantID;
         this.tableNumber = tableNumber;
-        this.seatsNumber = seatsNumber;
+        this.seatsCount = seatsCount;
     }
 }
